@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Find Caregivers | CareConnect</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="icon" type="image/png" href="images/logo.png">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <style>
+        .search-container {
+            display: grid;
+            grid-template-columns: 280px 1fr;
+            gap: 40px;
+            padding: 40px 0;
+        }
+
+        @media (max-width: 900px) {
+            .search-container {
+                grid-template-columns: 1fr;
+            }
+
+            aside {
+                display: none;
+                /* Hidden on mobile for simple demo */
+            }
+        }
+
+        .filter-group {
+            margin-bottom: 24px;
+        }
+
+        .filter-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+
+        /* Removed old caregiver card styles to allow style.css to take precedence */
+    </style>
+</head>
+
+<body>
+    <nav class="navbar">
+        <div class="container nav-content">
+            <a href="index.html" class="logo">
+                <img src="images/logo.png" alt="Logo">
+                CareConnect
+            </a>
+            <div class="nav-links">
+                <a href="index.html" class="nav-item">Home</a>
+                <a href="messages-feedback.html" class="nav-item">Messages & Feedback</a>
+                <a href="login.html" class="btn btn-outline" style="padding: 6px 16px;">Login</a>
+                <button id="theme-toggle" class="theme-toggle" aria-label="Toggle Theme">
+                    <div class="toggle-track">
+                        <span class="sun-icon">☀️</span>
+                        <span class="moon-icon">🌙</span>
+                    </div>
+                    <div class="toggle-thumb"></div>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <div class="page-header"
+        style="background: linear-gradient(135deg, rgba(13, 148, 136, 0.05) 0%, rgba(255,255,255,0) 100%); padding: 60px 0 30px; margin-bottom: 20px; border-bottom: 1px solid var(--border-color);">
+        <div class="container">
+            <h1 style="font-size: 2.22rem; margin-bottom: 8px;">Find the Perfect Caregiver</h1>
+            <p style="color: var(--text-secondary); max-width: 600px; font-size: 1.1rem;">Connect with verified
+                professionals for elderly care, nursing, and hospital assistance in your area.</p>
+        </div>
+    </div>
+
+    <div class="container search-container">
+        <!-- Filter Sidebar -->
+        <aside class="sidebar-sticky" style="position: sticky; top: 100px; align-self: start; height: fit-content;">
+            <div class="card" style="border: 1px solid var(--border-color); box-shadow: var(--shadow-sm);">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px;">
+                    <h3 style="font-size: 1.1rem;">Filters</h3>
+                    <button onclick="window.location.reload()"
+                        style="background: none; border: none; color: var(--primary-color); font-size: 0.85rem; cursor: pointer; font-weight: 500;">Reset</button>
+                </div>
+
+                <div class="filter-group">
+                    <label>Location</label>
+                    <select id="filter-location" class="input-field">
+                        <option value="all">All Locations</option>
+                        <option value="colombo">Colombo</option>
+                        <option value="kandy">Kandy</option>
+                        <option value="galle">Galle</option>
+                        <option value="kurunegala">Kurunegala</option>
+                    </select>
+                </div>
+
+                <div class="filter-group">
+                    <label>Service Type</label>
+                    <div id="filter-service" style="display: flex; flex-direction: column; gap: 8px;">
+                        <label style="font-weight: 400;"><input type="checkbox" value="attendant"> Hospital
+                            Attendant</label>
+                        <label style="font-weight: 400;"><input type="checkbox" value="nurse"> Home Nursing</label>
+                        <label style="font-weight: 400;"><input type="checkbox" value="elderly"> Elderly Care</label>
+                    </div>
+                </div>
+
+                <div class="filter-group">
+                    <label>Minimum Rating</label>
+                    <select id="filter-rating" class="input-field">
+                        <option value="0">Any Rating</option>
+                        <option value="4">4+ Stars</option>
+                        <option value="4.5">4.5+ Stars</option>
+                        <option value="5">5 Stars</option>
+                    </select>
+                </div>
+
+                <div class="filter-group">
+                    <label>Price Range (LKR)</label>
+                    <input type="range" class="input-field" style="padding: 0;">
+                    <div
+                        style="display: flex; justify-content: space-between; font-size: 0.9rem; color: var(--text-secondary); margin-top: 8px;">
+                        <span>1000</span>
+                        <span>5000+</span>
+                    </div>
+                </div>
+
+                <button id="apply-filters" class="btn btn-primary" style="width: 100%; margin-bottom: 12px;">Apply
+                    Filters</button>
+                <button id="gps-btn" class="btn btn-outline"
+                    style="width: 100%; font-size: 0.95rem; display: flex; align-items: center; justify-content: center; gap: 8px; font-weight: 600;">
+                    <span style="color: #db2777; font-size: 1.1rem;">📍</span> Use My Location
+                </button>
+            </div>
+        </aside>
+
+        <!-- Results Area -->
+        <main>
+            <div style="margin-bottom: 24px; display: flex; justify-content: space-between; align-items: center;">
+                <p id="result-count" style="color: var(--text-secondary); font-weight: 500;">Loading professionals...
+                </p>
+                <!-- Optional Sort Dropdown could go here -->
+            </div>
+
+            <div id="caregiver-results" class="grid"
+                style="display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 24px;">
+                <!-- Caregivers will be populated by JS -->
+            </div>
+        </main>
+    </div>
+
+    <script src="js/app.js"></script>
+    <script src="js/search.js"></script>
+    <button class="back-button" onclick="history.back()" aria-label="Go Back">
+        <img src="images/back-arrow.png" alt="Back">
+    </button>
+</body>
+
+</html>

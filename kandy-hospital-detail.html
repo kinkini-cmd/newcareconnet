@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kandy National Hospital | CareConnect</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="icon" type="image/png" href="images/logo.png">
+    <style>
+        .hospital-header {
+            background-color: var(--surface-color);
+            padding: 40px 0;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .grid-layout {
+            display: grid;
+            grid-template-columns: 1fr 350px;
+            gap: 40px;
+            margin-top: 40px;
+        }
+
+        @media (max-width: 900px) {
+            .grid-layout {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .service-tag {
+            display: inline-block;
+            padding: 8px 16px;
+            background: var(--bg-color);
+            border-radius: 8px;
+            margin: 0 8px 8px 0;
+            font-size: 0.9rem;
+        }
+
+        .contact-widget {
+            position: sticky;
+            top: 100px;
+            background: var(--surface-color);
+            padding: 24px;
+            border-radius: var(--radius);
+            border: 1px solid var(--border-color);
+        }
+
+        .action-btn {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            padding: 12px;
+            margin-bottom: 12px;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            border: 1px solid transparent;
+        }
+
+        .btn-call {
+            background-color: #dbeafe;
+            color: #1e40af;
+        }
+
+        .btn-call:hover {
+            background-color: #bfdbfe;
+        }
+
+        .btn-ambulance {
+            background-color: #fee2e2;
+            color: #991b1b;
+        }
+
+        .btn-ambulance:hover {
+            background-color: #fecaca;
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar">
+        <div class="container nav-content">
+            <a href="index.html" class="logo">
+                <img src="images/logo.png" alt="Logo">
+                CareConnect
+            </a>
+            <div class="nav-links">
+                <a href="index.html" class="nav-item">Home</a>
+                <a href="messages-feedback.html" class="nav-item">Messages & Feedback</a>
+                <button id="theme-toggle" class="theme-toggle" aria-label="Toggle Theme">
+                    <div class="toggle-track">
+                        <span class="sun-icon">☀️</span>
+                        <span class="moon-icon">🌙</span>
+                    </div>
+                    <div class="toggle-thumb"></div>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Header -->
+    <header class="hospital-header">
+        <div class="container">
+            <div style="display: flex; gap: 24px; align-items: flex-start;">
+                <div
+                    style="width: 120px; height: 120px; background-image: url('https://images.unsplash.com/photo-1538108149393-fbbd81895907?auto=format&fit=crop&w=800&q=80'); background-size: cover; background-position: center; border-radius: 12px; border: 2px solid white; box-shadow: var(--shadow-sm);">
+                </div>
+                <div>
+                    <span class="badge badge-verified" style="margin-bottom: 8px; display: inline-block;">Public
+                        Hospital</span>
+                    <h1 style="margin-bottom: 8px;">Kandy National Hospital</h1>
+                    <p style="color: var(--text-secondary); margin-bottom: 16px;">Hospital Road, Kandy</p>
+                    <div style="display: flex; gap: 16px; font-size: 0.9rem;">
+                        <span>⭐ 4.3 (1,500 Reviews)</span>
+                        <span>🕒 Open 24/7</span>
+                        <span>🚑 Emergency Unit Available</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="container grid-layout">
+        <main>
+            <div class="card" style="margin-bottom: 32px;">
+                <h2 style="margin-bottom: 20px;">About the Hospital</h2>
+                <p style="color: var(--text-secondary); line-height: 1.6; margin-bottom: 24px;">
+                    The Kandy National Hospital is the second largest healthcare institution in Sri Lanka, serving as a
+                    primary tertiary care facility for the Central Province and surrounding regions. It is a key
+                    teaching hospital affiliated with the University of Peradeniya.
+                </p>
+
+                <h3 style="margin-bottom: 16px;">Key Specialties</h3>
+                <div style="margin-bottom: 24px;">
+                    <span class="service-tag">General Surgery</span>
+                    <span class="service-tag">Pediatrics</span>
+                    <span class="service-tag">Orthopedics</span>
+                    <span class="service-tag">Neurology</span>
+                    <span class="service-tag">Maternity Care</span>
+                </div>
+
+                <h3 style="margin-bottom: 16px;">Facilities & Wards</h3>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 24px;">
+                    <ul style="color: var(--text-secondary); line-height: 1.8; list-style-position: inside;">
+                        <li>Accident & Emergency</li>
+                        <li>Intensive Care Units</li>
+                        <li>Specialized Clinics</li>
+                    </ul>
+                    <ul style="color: var(--text-secondary); line-height: 1.8; list-style-position: inside;">
+                        <li><strong>Medical Wards:</strong> Blocks A & B</li>
+                        <li><strong>Surgical Units:</strong> Block C</li>
+                        <li><strong>Maternity:</strong> 3rd Floor</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="card">
+                <h2 style="margin-bottom: 20px;">Caregivers at this Hospital</h2>
+                <p style="color: var(--text-secondary); margin-bottom: 24px;">Top-rated professionals frequently
+                    serving patients at Kandy National Hospital.</p>
+
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+                    <div class="card"
+                        style="padding: 16px; border: 1px solid var(--border-color); background: var(--bg-color);">
+                        <div style="display: flex; gap: 12px; align-items: center;">
+                            <img src="https://ui-avatars.com/api/?name=Sunil+G&background=0d9488&color=fff"
+                                style="width: 40px; height: 40px; border-radius: 50%;">
+                            <div>
+                                <h4 style="font-size: 0.9rem;">Sunil Gamage</h4>
+                                <span class="rating" style="font-size: 0.8rem;">★ 4.6</span>
+                            </div>
+                        </div>
+                        <a href="profile.html?id=7" class="btn btn-primary"
+                            style="width: 100%; margin-top: 12px; font-size: 0.8rem; padding: 6px;">View Profile</a>
+                    </div>
+
+                    <div class="card"
+                        style="padding: 16px; border: 1px solid var(--border-color); background: var(--bg-color);">
+                        <div style="display: flex; gap: 12px; align-items: center;">
+                            <img src="https://ui-avatars.com/api/?name=Priyanthi+L&background=0284c7&color=fff"
+                                style="width: 40px; height: 40px; border-radius: 50%;">
+                            <div>
+                                <h4 style="font-size: 0.9rem;">Priyanthi Liyanage</h4>
+                                <span class="rating" style="font-size: 0.8rem;">★ 4.8</span>
+                            </div>
+                        </div>
+                        <a href="profile.html?id=8" class="btn btn-primary"
+                            style="width: 100%; margin-top: 12px; font-size: 0.8rem; padding: 6px;">View Profile</a>
+                    </div>
+                </div>
+
+                <a href="search.html?location=kandy" class="btn btn-outline" style="width: 100%; margin-top: 20px;">Find
+                    More Caregivers here &rarr;</a>
+            </div>
+        </main>
+
+        <aside>
+            <div class="contact-widget">
+                <h3 style="margin-bottom: 20px;">Connect with Hospital</h3>
+
+                <button class="action-btn btn-call" onclick="alert('Calling Kandy National Hospital: 081 223 3337')">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <path
+                            d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z">
+                        </path>
+                    </svg>
+                    Call General Line
+                </button>
+
+                <button class="action-btn btn-ambulance"
+                    onclick="alert('Dispatching 1990 Suwa Seriya Ambulance to your location...')">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <rect x="1" y="3" width="22" height="13" rx="2" ry="2"></rect>
+                        <path d="M7 16v4"></path>
+                        <path d="M17 16v4"></path>
+                        <path d="M5 8h14"></path>
+                        <path d="M15 8V4a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v4"></path>
+                    </svg>
+                    Emergency Assistance
+                </button>
+
+                <div style="margin-top: 24px; padding-top: 24px; border-top: 1px solid var(--border-color);">
+                    <h4 style="margin-bottom: 12px; font-size: 1rem;">Location</h4>
+                    <div
+                        style="height: 200px; background-color: #e2e8f0; border-radius: 8px; display: flex; align-items: center; justify-content: center; color: var(--text-secondary);">
+                        Map View
+                    </div>
+                    <button class="btn btn-outline" style="width: 100%; margin-top: 12px;"
+                        onclick="window.open('https://maps.google.com')">Get Directions</button>
+                </div>
+            </div>
+        </aside>
+    </div>
+
+    <script src="js/app.js"></script>
+    <button class="back-button" onclick="history.back()" aria-label="Go Back">
+        <img src="images/back-arrow.png" alt="Back">
+    </button>
+</body>
+
+</html>

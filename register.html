@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register | CareConnect Sri Lanka</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="icon" type="image/png" href="images/logo.png">
+    <style>
+        .auth-container {
+            min-height: 80vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 40px 20px;
+        }
+
+        .auth-card {
+            max-width: 500px;
+            width: 100%;
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar">
+        <div class="container nav-content">
+            <a href="index.html" class="logo">
+                <img src="images/logo.png" alt="Logo">
+                CareConnect
+            </a>
+            <div class="nav-links">
+                <a href="index.html" class="nav-item">Home</a>
+                <button id="theme-toggle" class="theme-toggle" aria-label="Toggle Theme">
+                    <div class="toggle-track">
+                        <span class="sun-icon">☀️</span>
+                        <span class="moon-icon">🌙</span>
+                    </div>
+                    <div class="toggle-thumb"></div>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <div class="auth-container">
+        <div class="card auth-card">
+            <div style="text-align: center; margin-bottom: 24px;">
+                <h1 style="margin-bottom: 8px;">Create Account</h1>
+                <p style="color: var(--text-secondary);">Select your account type to get started</p>
+            </div>
+
+            <!-- Role Switcher -->
+            <div class="role-switcher"
+                style="display: flex; gap: 8px; background: var(--bg-color); padding: 4px; border-radius: 8px; margin-bottom: 24px;">
+                <label style="flex: 1; text-align: center; cursor: pointer;">
+                    <input type="radio" name="role" value="patient" checked style="display: none;"
+                        onchange="toggleRole('patient')">
+                    <div class="role-btn active" id="btn-patient"
+                        style="padding: 8px; border-radius: 6px; font-weight: 500; transition: all 0.2s;">Patient</div>
+                </label>
+                <label style="flex: 1; text-align: center; cursor: pointer;">
+                    <input type="radio" name="role" value="caregiver" style="display: none;"
+                        onchange="toggleRole('caregiver')">
+                    <div class="role-btn" id="btn-caregiver"
+                        style="padding: 8px; border-radius: 6px; font-weight: 500; transition: all 0.2s;">Caregiver
+                    </div>
+                </label>
+                <label style="flex: 1; text-align: center; cursor: pointer;">
+                    <input type="radio" name="role" value="admin" style="display: none;" onchange="toggleRole('admin')">
+                    <div class="role-btn" id="btn-admin"
+                        style="padding: 8px; border-radius: 6px; font-weight: 500; transition: all 0.2s;">Admin</div>
+                </label>
+            </div>
+
+            <form action="dashboard.html" onsubmit="return handleRegister(event)">
+
+                <!-- Common Fields -->
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 20px;">
+                    <div>
+                        <label style="display: block; margin-bottom: 8px; font-weight: 500;">First Name</label>
+                        <input type="text" class="input-field" placeholder="Kamal" required>
+                    </div>
+                    <div>
+                        <label style="display: block; margin-bottom: 8px; font-weight: 500;">Last Name</label>
+                        <input type="text" class="input-field" placeholder="Perera" required>
+                    </div>
+                </div>
+
+                <div style="margin-bottom: 20px;">
+                    <label style="display: block; margin-bottom: 8px; font-weight: 500;">Email Address</label>
+                    <input type="email" class="input-field" placeholder="you@example.com" required>
+                </div>
+
+                <!-- Caregiver Specific Fields -->
+                <div id="caregiver-fields" style="display: none;">
+                    <div style="margin-bottom: 20px;">
+                        <label style="display: block; margin-bottom: 8px; font-weight: 500;">NIC Number</label>
+                        <input type="text" class="input-field" placeholder="123456789V">
+                    </div>
+                    <div style="margin-bottom: 20px;">
+                        <label style="display: block; margin-bottom: 8px; font-weight: 500;">Service Type</label>
+                        <select class="input-field">
+                            <option>Hospital Attendant</option>
+                            <option>Home Nursing</option>
+                            <option>Midwife</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Admin Specific Fields -->
+                <div id="admin-fields" style="display: none;">
+                    <div style="margin-bottom: 20px;">
+                        <label style="display: block; margin-bottom: 8px; font-weight: 500;">Admin Access Code</label>
+                        <input type="password" class="input-field" placeholder="Enter system code">
+                    </div>
+                </div>
+
+                <div style="margin-bottom: 24px;">
+                    <label style="display: block; margin-bottom: 8px; font-weight: 500;">Password</label>
+                    <input type="password" class="input-field" placeholder="••••••••" required>
+                </div>
+
+                <button type="submit" class="btn btn-primary" style="width: 100%;">Create Account</button>
+
+                <div class="divider-text">or continue with</div>
+
+                <button type="button" class="btn btn-social" onclick="handleGoogleLogin()">
+                    <img src="https://www.svgrepo.com/show/475656/google-color.svg" alt="Google">
+                    Continue with Google
+                </button>
+            </form>
+
+            <div style="text-align: center; margin-top: 24px;">
+                <p style="color: var(--text-secondary);">Already have an account? <a href="login.html"
+                        style="color: var(--primary-color); font-weight: 600;">Login</a></p>
+                <div style="margin-top: 16px; font-size: 0.9rem;">
+                    <a href="#" style="color: var(--text-secondary); text-decoration: underline;">Looking to work as a
+                        Caregiver?</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/app.js"></script>
+    <script src="js/registration.js"></script>
+    <button class="back-button" onclick="history.back()" aria-label="Go Back">
+        <img src="images/back-arrow.png" alt="Back">
+    </button>
+</body>
+
+</html>

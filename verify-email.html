@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verify Email | CareConnect Sri Lanka</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="icon" type="image/png" href="images/logo.png">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+
+<body>
+    <div class="auth-container">
+        <div class="auth-card">
+            <div class="auth-icon">
+                <i class='bx bx-envelope-open'></i>
+            </div>
+
+            <h1 style="margin-bottom: 12px; font-size: 1.75rem;">Verify your email</h1>
+            <p style="color: var(--text-secondary); margin-bottom: 32px; font-size: 0.95rem;">
+                We sent a verification code to <strong>john@example.com</strong>
+            </p>
+
+            <form action="reset-password.html">
+                <div style="text-align: left; margin-bottom: 24px;">
+                    <label
+                        style="display: block; margin-bottom: 16px; font-weight: 500; font-size: 0.9rem; text-align: center;">Enter
+                        verification code</label>
+
+                    <div class="otp-container">
+                        <input type="text" class="otp-input" maxlength="1" required>
+                        <input type="text" class="otp-input" maxlength="1" required>
+                        <input type="text" class="otp-input" maxlength="1" required>
+                        <input type="text" class="otp-input" maxlength="1" required>
+                    </div>
+
+                    <p style="font-size: 0.8rem; color: var(--text-secondary); text-align: center;">
+                        Enter the 4-digit code we sent you
+                    </p>
+                </div>
+
+                <button type="submit" class="btn btn-primary" style="width: 100%; margin-bottom: 24px;">Verify
+                    code</button>
+            </form>
+
+            <p style="font-size: 0.9rem; color: var(--text-secondary); margin-bottom: 16px;">
+                Didn't receive the code? <a href="#" style="color: var(--primary-color); font-weight: 600;">Resend
+                    Code</a>
+            </p>
+
+            <a href="login.html"
+                style="font-size: 0.9rem; color: var(--text-secondary); display: flex; align-items: center; justify-content: center; gap: 4px;">
+                <i class='bx bx-left-arrow-alt'></i> Back to log in
+            </a>
+        </div>
+    </div>
+
+    <!-- Simple script to auto-focus next input -->
+    <script>
+        const inputs = document.querySelectorAll('.otp-input');
+        inputs.forEach((input, index) => {
+            input.addEventListener('input', (e) => {
+                if (e.target.value.length === 1 && index < inputs.length - 1) {
+                    inputs[index + 1].focus();
+                }
+            });
+            input.addEventListener('keydown', (e) => {
+                if (e.key === 'Backspace' && e.target.value === '' && index > 0) {
+                    inputs[index - 1].focus();
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>

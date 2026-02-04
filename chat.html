@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat with Nimal - CareConnect</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="icon" type="image/png" href="images/logo.png">
+    <style>
+        .chat-container {
+            max-width: 900px;
+            margin: 40px auto;
+            height: calc(100vh - 180px);
+            display: grid;
+            grid-template-rows: auto 1fr auto;
+            overflow: hidden;
+            border: none;
+            background: var(--surface-color);
+        }
+
+        .chat-header {
+            padding: 24px 32px;
+            background: var(--surface-transparent);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border-color);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 10;
+        }
+
+        .chat-messages {
+            padding: 32px;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            background: linear-gradient(to bottom, var(--bg-color), var(--surface-color));
+        }
+
+        .chat-input-area {
+            padding: 24px 32px;
+            background: var(--surface-color);
+            border-top: 1px solid var(--border-color);
+            display: flex;
+            gap: 16px;
+            align-items: flex-end;
+        }
+
+        .status-dot {
+            width: 10px;
+            height: 10px;
+            background: #10b981;
+            border-radius: 50%;
+            display: inline-block;
+            margin-right: 6px;
+            box-shadow: 0 0 8px rgba(16, 185, 129, 0.4);
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar">
+        <div class="container nav-content">
+            <a href="index.html" class="logo">
+                <img src="images/logo.png" alt="Logo">
+                CareConnect
+            </a>
+            <a href="dashboard.html" class="nav-item">Dashboard</a>
+            <a href="messages-feedback.html" class="nav-item">Messages & Feedback</a>
+            <button id="theme-toggle" class="theme-toggle" aria-label="Toggle Theme">
+                <div class="toggle-track">
+                    <span class="sun-icon">☀️</span>
+                    <span class="moon-icon">🌙</span>
+                </div>
+                <div class="toggle-thumb"></div>
+            </button>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="card chat-container">
+            <div class="chat-header">
+                <div style="display: flex; align-items: center; gap: 16px;">
+                    <img src="https://ui-avatars.com/api/?name=Nimal+R&background=0d9488&color=fff"
+                        style="width: 50px; height: 50px; border-radius: 50%; box-shadow: var(--shadow-sm);">
+                    <div>
+                        <div style="font-weight: 700; font-size: 1.2rem;">Nimal Rathnayake</div>
+                        <div
+                            style="font-size: 0.85rem; color: var(--text-secondary); display: flex; align-items: center;">
+                            <span class="status-dot"></span> Online
+                        </div>
+                    </div>
+                </div>
+                <div class="location-pill">
+                    📍 National Hospital
+                </div>
+            </div>
+
+            <div class="chat-messages" id="chat-messages">
+                <div class="chat-bubble received">
+                    Hello! I'm Nimal. I noticed you were looking for help at Asiri Surgical.
+                    I'm available for shifts there starting tomorrow.
+                </div>
+                <div class="chat-bubble received">
+                    How can I assist you and your loved ones today?
+                </div>
+            </div>
+
+            <div class="chat-input-area">
+                <div style="flex: 1; position: relative;">
+                    <div id="typing" style="position: absolute; top: -45px; left: 0; display: none;">
+                        <div class="typing-dots">
+                            <span></span><span></span><span></span>
+                        </div>
+                    </div>
+                    <input type="text" id="message-input" class="input-field"
+                        placeholder="Type a professional message...">
+                </div>
+                <button id="send-btn" class="btn btn-primary" style="padding: 14px 32px;">Send Message</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/app.js"></script>
+    <script src="js/chat.js"></script>
+    <button class="back-button" onclick="history.back()" aria-label="Go Back">
+        <img src="images/back-arrow.png" alt="Back">
+    </button>
+</body>
+
+</html>
